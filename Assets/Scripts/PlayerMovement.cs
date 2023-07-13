@@ -80,4 +80,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = _transform.rotation * Vector3.forward;
         return direction.normalized;
     }
+    public Vector3 GetPosition()
+    {
+        return _transform.position;
+    }
 }
