@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
             inProcess = false;
             lastTime = Time.time;
             Vector3 movementVector = _playerMovement.WherePlayerLooks();
-            Instantiate(stonePrefab, new Vector3(_transform.position.x + (movementVector.x * StoneDistanceFromPlayer), _transform.position.y + 2, _transform.position.z + (movementVector.z * StoneDistanceFromPlayer)),Quaternion.identity);
+            Instantiate(stonePrefab, new Vector3(_transform.position.x + (movementVector.x * StoneDistanceFromPlayer), _transform.position.y + 1, _transform.position.z + (movementVector.z * StoneDistanceFromPlayer)),Quaternion.identity);
         }
     }
 }
