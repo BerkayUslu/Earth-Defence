@@ -9,7 +9,6 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement _playerMovement;
     PlayerAnimation _playerAnimation;
     [SerializeField] GameObject stonePrefab;
-    [SerializeField] float StoneDistanceFromPlayer = 1.5f;
     [SerializeField] float waitTime = .4f;
     bool inProcess = false;
     float castTime = 0;
@@ -38,8 +37,19 @@ public class PlayerAttack : MonoBehaviour
         {
             inProcess = false;
             lastTime = Time.time;
-            Vector3 movementVector = _playerMovement.WherePlayerLooks();
-            Instantiate(stonePrefab, new Vector3(_transform.position.x + (movementVector.x * StoneDistanceFromPlayer), _transform.position.y + 1, _transform.position.z + (movementVector.z * StoneDistanceFromPlayer)),Quaternion.identity);
+            GameObject attack = PlayerAttackPool.attackPoolSharedInstance.GetPooledObject();
+            if(attack != null)
+            {
+                Vector3 movementVector = _playerMovement.WherePlayerLooks();
+                //Instantiate(stonePrefab
+                //    ,new Vector3(_transform.position.x + (movementVector.x * StoneDistanceFromPlayer), _transform.position.y + 1, _transform.position.z + (movementVector.z * StoneDistanceFromPlayer))
+                //    , Quaternion.identity);
+                attack.transform.rotation = Quaternion.identity;
+                attack.transform.position = new Vector3(_transform.position.x + movementVector.x , _transform.position.y + 1, _transform.position.z + movementVector.z );
+                attack.SetActive(true);
+
+            }
+            
         }
     }
 }

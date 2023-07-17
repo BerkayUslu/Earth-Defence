@@ -14,19 +14,23 @@ public class Stone : MonoBehaviour
     float deathTime;
 
 
-    float secondsToDestroyAfterCollision = 0.15f;
+    float secondsToDestroyAfterCollision = 0f;
 
-    private void Awake()
+    private void OnEnable()
     {
-        collisionTime = Time.time;
         _transform = transform;
-        _playerMovement = GameObject.Find("PlayerMain").GetComponent<PlayerMovement>();
-        direction = _playerMovement.WherePlayerLooks();
         deathTime = Time.time + totalLifeTime;
+        collisionTime = Time.time;
+        if (_playerMovement != null)
+        {
+            direction = _playerMovement.WherePlayerLooks();
+        }
     }
-    void Start()
+
+
+    public void SetPlayerMovementreference(PlayerMovement reference)
     {
-        
+        _playerMovement = reference;
     }
 
 
@@ -41,7 +45,8 @@ public class Stone : MonoBehaviour
         float time = Time.time;
         if ((time - collisionTime > a && isCollided) || time > deathTime)
         {
-            Destroy(gameObject);
+            isCollided = false;
+            gameObject.SetActive(false);
 
         }
     }

@@ -18,4 +18,8 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Game Over");
         }
     }
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
+    }
 }

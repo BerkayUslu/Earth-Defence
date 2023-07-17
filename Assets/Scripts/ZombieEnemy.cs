@@ -57,6 +57,7 @@ public class ZombieEnemy : MonoBehaviour
         }
     }
 
+
     public void SetPlayerReferences(PlayerHealth playerHealth, PlayerMovement playerMovement)
     {
         _playerHealth = playerHealth;
@@ -65,7 +66,11 @@ public class ZombieEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        gameObject.SetActive(false);
+
+            gameObject.SetActive(false);
+
+
+      
 
     }
 }

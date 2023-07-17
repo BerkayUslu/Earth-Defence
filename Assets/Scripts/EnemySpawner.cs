@@ -20,9 +20,9 @@ public class EnemySpawner : MonoBehaviour
         //Genrate random between 25 and 30
         //Get that point accoring to the player then generate
         float angle = Random.Range(0f, 360f);
-        float magnitude = Random.Range(25f, 30f);
+        float magnitude = Random.Range(30f, 35f);
         float x = magnitude * Mathf.Sin(angle * Mathf.Deg2Rad);
-        float y = magnitude * Mathf.Sin(angle * Mathf.Deg2Rad);
+        float y = magnitude * Mathf.Cos(angle * Mathf.Deg2Rad);
         Vector3 location = new Vector3(x, 0, y) + playerTransform.position;
         return location;
 
